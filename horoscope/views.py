@@ -87,12 +87,9 @@ def info_about_horoscope_number(request, sign:int):
 
 def index(request):
     zodiacs = list(zodiac_dict)
-    res=' '
+    
 
-    for sign in zodiacs:
-        redirect_path =reverse("horoscope_name", args=[sign])
-        res += f"<li><a href='{redirect_path}' style='color:red;'>{sign.title()}</a></li>"
-    return HttpResponse(f"<h3>{res}</h3>")
+    return render(request, "horoscope/index.html", context={"zodiacs":zodiacs})
 
 
 

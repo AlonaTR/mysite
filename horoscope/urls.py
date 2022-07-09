@@ -9,4 +9,4 @@ urlpatterns = [
     path('<int:sign>/', info_about_horoscope_number ),
     path('<str:sign>/', info_about_horoscope,name='horoscope_name'),
     
-    
+]
