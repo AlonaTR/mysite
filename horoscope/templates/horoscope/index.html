@@ -1,14 +1,33 @@
-{% extends 'base.html' %}
-
-{% block title %}
-    Menu
+{% extends "base.html" %}
+ 
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'horoscope/css/index.css' %}">
 {% endblock %}
 
+{% block title %}Menu{% endblock %}
+
 {% block content %}
-    <h2>Menu</h2>
+    
+{% include 'includes/nav_panel.html' %}
     <ul>
         {% for zodiac in zodiacs %}
             <li><a href="{% url 'horoscope_name' sign_zodiac=zodiac %}">{{ zodiac|title }}</a></li>
         {% endfor %} 
     </ul>
 {% endblock %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Horoscope menu</title>
+</head>
+<body>
+    <ul>
+    {% for zodiac in zodiacs %}
+        <li><a href="{% url 'horoscope_name' sign_zodiac=zodiac %}">{{ zodiac|title }}</a></li>
+    {% endfor %} 
+    </ul>
+</body>
+</html {% endcomment %}
