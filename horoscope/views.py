@@ -60,20 +60,17 @@ zodiac_dict = {
 }
 
 
-def info_about_horoscope(request, sign):
-    if sign in zodiac_dict :
-        # response = render_to_string("horoscope/info_zodiac.html")
-        return render(request, "horoscope/info_zodiac.html", context={"sign":sign, "zodiac":zodiac_dict[sign]['description']})
-        # return HttpResponse(zodiac_dict[sign]['description'])
-    elif sign=='type':
+def info_about_horoscope(request, sign_zodiac):
+    if sign_zodiac in zodiac_dict :
+        return render(request, "horoscope/info_zodiac.html", context={"sign":sign_zodiac, "zodiac":zodiac_dict[sign_zodiac]['description']})
+    elif sign_zodiac=='type':
         inf=''
-        for sign in zodiac_dict:
-            if zodiac_dict[sign]['type'] in inf:
+        for sign_zodiac in zodiac_dict:
+            if zodiac_dict[sign_zodiac]['type'] in inf:
                 continue
             else:
-                # redirect_path = sign
-                redirect_path=reverse("type_horoscope", args=[zodiac_dict[sign]['type']])
-                inf += f"<li><a href='{redirect_path}'>{zodiac_dict[sign]['type'].capitalize()}</a></li>"
+                redirect_path=reverse("type_horoscope", args=[zodiac_dict[sign_zodiac]['type']])
+                inf += f"<li><a href='{redirect_path}'>{zodiac_dict[sign_zodiac]['type'].capitalize()}</a></li>"
         return HttpResponse(f"<h2>{inf}</h2>")
     else:
         return HttpResponse("No such sign")

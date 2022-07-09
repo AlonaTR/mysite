@@ -7,6 +7,6 @@ urlpatterns = [
     path('<int:month>/<int:day>', month_day_horoscope),
     path('type/<str:type>/', type_of_horoscope, name='type_horoscope'),
     path('<int:sign>/', info_about_horoscope_number ),
-    path('<str:sign>/', info_about_horoscope,name='horoscope_name'),
+    path('<str:sign_zodiac>/', info_about_horoscope,name='horoscope_name'),
     
 ]
